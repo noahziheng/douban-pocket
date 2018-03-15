@@ -18,7 +18,7 @@ class ContentList extends Component {
   componentDidMount () {
     let inst = null
     if (this.props.currentTab === 'movies') inst = apiClient.getMovies('霍金')
-    if (this.props.currentTab === 'musics') inst = apiClient.getMusics('霍金')
+    if (this.props.currentTab === 'musics') inst = apiClient.getMusics('周杰伦')
     if (this.props.currentTab === 'books' || inst === null) inst = apiClient.getBooks('霍金')
     inst.then(json => {
       console.log(json)
