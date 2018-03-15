@@ -1,0 +1,14 @@
+.my-list .spe .am-list-extra {
+  flex-basis: initial;
+}
+.list-left-white {
+  margin-left: 0.5em;
+}
+.tag-yellow {
+  color: white;
+  background: rgb(177, 177, 0);
+}
+.tag-red {
+  color: white;
+  background: rgb(150, 0, 0);
+}

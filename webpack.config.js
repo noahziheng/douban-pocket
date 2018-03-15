@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: './src/index.jsx',
@@ -25,8 +26,7 @@ module.exports = {
             [
               'import',
               {
-                libraryName: 'antd',
-                libraryDirectory: 'es',
+                libraryName: 'antd-mobile',
                 style: 'css'
               }
             ] // Ant Design import dependency
@@ -43,6 +43,10 @@ module.exports = {
       template: 'src/index.html',
       // 打包后文件名称，会自动放到 output 指定的 dist 目录
       filename: 'index.html'
-    })
+    }),
+    new CopyWebpackPlugin([{
+      from: './src/assets',
+      to: 'assets'
+    }])
   ]
 }

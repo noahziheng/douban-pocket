@@ -1,0 +1,7 @@
+.am-search {
+  border-bottom: 1px solid #ddd;
+  box-sizing: content-box;
+}
+.am-search * {
+  box-sizing: inherit;
+}
