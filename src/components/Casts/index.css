@@ -1,0 +1,23 @@
+.casts-container-outer {
+  background: white;
+  width: 100%;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #888;
+}
+
+.casts-container-outer h2 {
+  margin: 0;
+  padding: 8px;
+}
+
+.casts-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.casts-container iframe {
+  display: inline;
+  flex: 1;
+  max-width: 30%;
+  border-radius: 50px;
+}

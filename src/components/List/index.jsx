@@ -43,7 +43,7 @@ class ContentList extends Component {
         <Item
           extra={item.rating.average}
           align='top'
-          thumb={item.image}
+          thumb={item.images.small}
           key={i}
           multipleLine>
           {item.title}

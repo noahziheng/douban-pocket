@@ -14,11 +14,12 @@
 }
 
 .am-list-item img {
-  width: 45px;
-  height: 45px;
+  width: 60px;
+  height: auto;
 }
 .am-list-item iframe {
-  width: 45px;
-  height: 45px;
+  width: 80px;
+  height: auto;
   vertical-align: middle;
+  padding: 10px 0;
 }

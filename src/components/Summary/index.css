@@ -1,0 +1,15 @@
+.summary-container-outer {
+  background: white;
+  width: 100%;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #888;
+}
+
+.summary-container-outer h2 {
+  margin: 0;
+  padding: 8px;
+}
+
+.summary-container {
+  padding: 0 20px;
+}
