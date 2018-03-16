@@ -6,7 +6,8 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist')
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.jsx', '.js']
@@ -35,7 +36,10 @@ module.exports = {
       }
     }]
   },
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
+  devServer: {
+    historyApiFallback: true
+  },
   plugins: [
     // 加入 html 模板任务
     new HtmlWebpackPlugin({

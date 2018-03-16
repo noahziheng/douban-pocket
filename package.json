@@ -33,7 +33,8 @@
   },
   "standard": {
     "global": [
-      "fetch"
+      "fetch",
+      "localStorage"
     ]
   }
 }

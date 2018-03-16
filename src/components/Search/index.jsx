@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { SearchBar } from 'antd-mobile'
 
 import './index.css'
+import EventEmiter from '../../EventEmiter'
 
 const placeholders = {
   books: '书名、作者、ISBN',
@@ -16,14 +17,22 @@ class Search extends Component {
       value: ''
     }
   }
+
   componentDidMount () {
     // this.searchInst.focus()
   }
+
   onChange (value) {
     this.setState({ value })
   }
+
+  onSubmit (value) {
+    EventEmiter.dispatch('updateData_' + this.props.currentTab, value)
+  }
+
   clear () {
     this.setState({ value: '' })
+    EventEmiter.dispatch('updateData_' + this.props.currentTab)
   }
 
   render () {
@@ -31,11 +40,11 @@ class Search extends Component {
       <SearchBar
         value={this.state.value}
         placeholder={placeholders[this.props.currentTab]}
-        onSubmit={value => console.log(value, 'onSubmit')}
-        onClear={value => console.log(value, 'onClear')}
+        onSubmit={this.onSubmit.bind(this)}
+        onClear={this.clear.bind(this)}
         onFocus={() => console.log('onFocus')}
         onBlur={() => console.log('onBlur')}
-        onCancel={() => console.log('onCancel')}
+        onCancel={this.clear.bind(this)}
         onChange={this.onChange.bind(this)}
         ref={ref => { this.searchInst = ref }}
       />

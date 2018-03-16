@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { List, Tag } from 'antd-mobile'
 import apiClient from '../../api'
+import EventEmitter from '../../EventEmiter'
 
 import './index.css'
+import RefererKiller from '../RefererKiller'
 
 const Item = List.Item
 const Brief = Item.Brief
@@ -16,12 +19,16 @@ class ContentList extends Component {
   }
 
   componentDidMount () {
+    EventEmitter.subscribe('updateData_' + this.props.currentTab, this.updateData.bind(this))
+    this.updateData()
+  }
+
+  updateData (query) {
     let inst = null
-    if (this.props.currentTab === 'movies') inst = apiClient.getMovies('霍金')
-    if (this.props.currentTab === 'musics') inst = apiClient.getMusics('周杰伦')
-    if (this.props.currentTab === 'books' || inst === null) inst = apiClient.getBooks('霍金')
+    if (this.props.currentTab === 'movies') inst = apiClient.getMovies(query)
+    if (this.props.currentTab === 'musics') inst = apiClient.getMusics(query || '周杰伦')
+    if (this.props.currentTab === 'books' || inst === null) inst = apiClient.getBooks(query || '霍金')
     inst.then(json => {
-      console.log(json)
       this.setState({
         data: json[this.props.currentTab === 'movies' ? 'subjects' : (this.props.currentTab || 'books')]
       })
@@ -75,7 +82,7 @@ class ContentList extends Component {
         <Item
           extra={item.rating.average}
           align='top'
-          thumb={item.image}
+          thumb={<RefererKiller src={item.image} />}
           key={i}
           multipleLine>
           {item.title}
@@ -96,7 +103,17 @@ class ContentList extends Component {
     return (
       <div>
         <List className='my-list'>
-          {this.state.data.map((item, i) => this.renderItem(item, i))}
+          {this.state.data.map((item, i) => (
+            <Link to={{
+              pathname: `/detail/${item.id}`,
+              state: {
+                data: item,
+                type: this.props.currentTab
+              }
+            }} key={i}>
+              {this.renderItem(item, i)}
+            </Link>
+          ))}
         </List>
       </div>
     )

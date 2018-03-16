@@ -12,3 +12,13 @@
   color: white;
   background: rgb(150, 0, 0);
 }
+
+.am-list-item img {
+  width: 45px;
+  height: 45px;
+}
+.am-list-item iframe {
+  width: 45px;
+  height: 45px;
+  vertical-align: middle;
+}

@@ -11,8 +11,8 @@ class App extends Component {
     return (
       <div className='app'>
         <Route exact path='/' component={Home} />
-        <Route path='/detail' component={Detail} />
-        <h1>从零开发口袋豆瓣</h1>
+        <Route exact path='/:type' component={Home} />
+        <Route path='/detail/:resId' component={Detail} />
       </div>
     )
   }
