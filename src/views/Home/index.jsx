@@ -40,7 +40,7 @@ class Home extends Component {
     return (<div style={{
       width: '22px',
       height: '22px',
-      background: 'url(/assets/images/' + name + (active ? '_1' : '') + '.svg) center center /  21px 21px no-repeat' }}
+      background: 'url(assets/images/' + name + (active ? '_1' : '') + '.svg) center center /  21px 21px no-repeat' }}
     />)
   }
 
