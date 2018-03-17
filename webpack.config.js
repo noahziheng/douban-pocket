@@ -9,7 +9,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './dist'),
-    publicPath: process.env.NODE_ENV === 'production' ? '' : '/'
+    publicPath: process.env.NODE_ENV === 'production' ? './' : '/'
   },
   resolve: {
     extensions: ['.jsx', '.js']
