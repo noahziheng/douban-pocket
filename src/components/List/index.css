@@ -13,6 +13,10 @@
   background: rgb(150, 0, 0);
 }
 
+.am-list {
+  width:100%;
+}
+
 .am-list-item img {
   width: 60px;
   height: auto;

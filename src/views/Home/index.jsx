@@ -17,6 +17,10 @@ class Home extends Component {
     }
   }
 
+  componentDidMount () {
+    this.refs.mainView_books.addEventListener('scroll', console.log.bind(this))
+  }
+
   handleSelectTab (target) {
     this.setState({
       selectedTab: target
@@ -25,7 +29,7 @@ class Home extends Component {
 
   renderContent (pageText) {
     return (
-      <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
+      <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }} ref={'mainView_' + pageText} onScroll={console.log.bind(this)}>
         <Search currentTab={pageText} />
         <List currentTab={pageText} />
       </div>

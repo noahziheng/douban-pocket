@@ -26,17 +26,17 @@ class ApiClient {
     }
   }
 
-  getBooks (query) {
-    return this.getClient('/book/search?q=' + encodeURI(query))
+  getBooks (query, page = 0) {
+    return this.getClient('/book/search?q=' + encodeURI(query) + '&start=' + page * 20)
   }
 
-  getMovies (query) {
-    let url = query ? '/movie/search?q=' + encodeURI(query) : '/movie/top250'
+  getMovies (query, page = 0) {
+    let url = query ? '/movie/search?q=' + encodeURI(query) + '&start=' + page * 20 : '/movie/top250?start=' + page * 20
     return this.getClient(url)
   }
 
-  getMusics (query) {
-    return this.getClient('/music/search?q=' + encodeURI(query))
+  getMusics (query, page = 0) {
+    return this.getClient('/music/search?q=' + encodeURI(query) + '&start=' + page * 20)
   }
 }
 
