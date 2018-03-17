@@ -1,6 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: './src/index.jsx',
@@ -15,7 +17,10 @@ module.exports = {
   module: {
     rules: [{
       test: /\.css$/,
-      use: ['style-loader', 'css-loader']
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: 'css-loader'
+      })
     }, {
       test: /\.jsx?$/,
       exclude: /node_modules/,
@@ -51,6 +56,8 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: './src/assets',
       to: 'assets'
-    }])
+    }]),
+    new ExtractTextPlugin('styles.css'),
+    new UglifyJsPlugin()
   ]
 }
