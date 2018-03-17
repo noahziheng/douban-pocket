@@ -10,10 +10,8 @@ const TAB_MUSICS = 'musics'
 class Home extends Component {
   constructor (props) {
     super(props)
-    let type = false
-    if (this.props.match) type = this.props.match.params.type
     this.state = {
-      selectedTab: type || TAB_BOOKS
+      selectedTab: TAB_BOOKS
     }
   }
 
