@@ -29,7 +29,7 @@ class Home extends Component {
 
   renderContent (pageText) {
     return (
-      <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }} ref={'mainView_' + pageText} onScroll={console.log.bind(this)}>
+      <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }} ref={'mainView_' + pageText}>
         <Search currentTab={pageText} />
         <List currentTab={pageText} />
       </div>
