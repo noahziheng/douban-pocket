@@ -6,7 +6,7 @@ class RefererKiller extends Component {
   }
 
   getHtml () {
-    return `<img src="${this.props.src}" onLoad="this.height = window.innerHeight"/>`
+    return `<img src="${this.props.src}" onLoad="this.height = window.innerHeight * 0.8"/>`
   }
 
   render () {

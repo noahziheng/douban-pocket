@@ -51,6 +51,7 @@ class ContentList extends Component {
         isLoading: false
       })
     })
+    console.log(this.refs['tag-list-0'])
   }
 
   onRefresh () {
@@ -112,7 +113,7 @@ class ContentList extends Component {
         <Item
           extra={item.rating.average}
           align='top'
-          thumb={item.images.small}
+          thumb={<RefererKiller src={item.images.small} />}
           key={i}
           multipleLine>
           {item.title}
@@ -122,9 +123,11 @@ class ContentList extends Component {
               <span key={i} className='list-left-white'>{author}</span>
             ))}
           </Brief>
-          {item.tags.map((tag, i) => (
-            <Tag key={i} small className='list-left-white tag-yellow'>{tag.name}</Tag>
-          ))}
+          <div className='list-tags' ref={'tags-list-' + i}>
+            {item.tags.map((tag, i) => (
+              <Tag key={i} small className='list-left-white tag-yellow'>{tag.name}</Tag>
+            ))}
+          </div>
           <Brief><span className='list-left-white'>{item.pubdate}</span></Brief>
         </Item>)
     } else if (this.props.currentTab === 'movies') {
@@ -132,7 +135,7 @@ class ContentList extends Component {
         <Item
           extra={item.rating.average}
           align='top'
-          thumb={item.images.small}
+          thumb={<RefererKiller src={item.images.small} />}
           key={i}
           multipleLine>
           {item.title}
@@ -193,7 +196,6 @@ class ContentList extends Component {
           key={this.state.useBodyScroll ? '0' : '1'}
           ref={el => { this.lv = el }}
           dataSource={this.state.dataSource}
-          renderHeader={() => <span>Pull to refresh</span>}
           renderFooter={() => (<div style={{ padding: 30, textAlign: 'center', background: 'white' }}>
             {this.state.isLoading ? '正在加载...' : '加载完成'}
           </div>)}
